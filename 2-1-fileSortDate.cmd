@@ -29,7 +29,7 @@ goto LOOP
 	call set monthName=%%map:*%~2-=%%
 	set right=%monthName:*;=%
 	call set monthName=%%monthName:%right%=%%
-	set dirName=%~2_%monthName%
-	set dirName=%dirName:;=%
+	set %~1=%~2_%monthName%
+	set %~1=%dirName:;=%
 	exit /B
 }

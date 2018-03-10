@@ -1,0 +1,22 @@
+Sortiert Dateien nach Datum in Unterverzeichnisse
+
+(1) 2-1-fileSortDate.cmd in das gewünschte Verzeichniss kopieren
+(2) Im Verzeichniss sollten sich Dateien befinden (Unterverzeihnisse werden nicht beachtet)
+(3) 2-1-fileSortDate.cmd ausführen
+(4) Nun haben Sie folgende Verzeichnissstruktur:
+	<.>
+		<YYYY>
+			<MM_month>
+				file1.ext
+				file2.ext
+			<MM_month>
+				file5.ext
+				file4.ext
+			...
+		<YYYY>
+			...
+		...
+(NOTE)  Um das ganze wieder rückgängig zu machen benutzen Sie 
+	2-2-subdir2dir und löschen Sie anschließend alle leeren
+	Ordner.
+
