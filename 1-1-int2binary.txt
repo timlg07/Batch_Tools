@@ -1,0 +1,5 @@
+Konvertiert Ganzzahlen (Integer) in Binärzahlen
+
+(1) 1-1-int2binary.bat ausführen
+(2) Zahl eingeben
+(3) Mit [ENTER] bestätigen
