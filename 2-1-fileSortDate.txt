@@ -17,6 +17,6 @@ Sortiert Dateien nach Datum in Unterverzeichnisse
 			...
 		...
 (NOTE)  Um das ganze wieder rückgängig zu machen benutzen Sie 
-	2-2-subdir2dir und löschen Sie anschließend alle leeren
-	Ordner.
+	2-2-subdir2dir. Die changes.log können Sie in diesem 
+        Fall einfach löschen.
 

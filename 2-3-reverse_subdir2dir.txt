@@ -1,0 +1,10 @@
+Kann nach dem Benutzen von 2-2-subdir2dir.cmd die Änderungen wieder rückgängig machen
+
+(1) 2-3-reverse_subdir2dir.cmd in das Verzeichnis von 2-2-subdir2dir.cmd kopieren
+(3) 2-3-reverse_subdir2dir.cmd ausführen
+
+(NOTE)  Um die ursprünglichen Ordnerstrukturen rückgängig machen zu können
+        wird die Datei changes.log benötigt!
+        Wollen Sie nur einen Teil der Änderungen rückgängig machen entfernen Sie
+        die restlichen Zeilen aus changes.log
+
