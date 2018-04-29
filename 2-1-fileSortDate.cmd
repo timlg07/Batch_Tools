@@ -3,13 +3,15 @@ set "year=%date:~6,4%"
 set "month=%date:~3,2%"
 if not exist %year% md %year%
 :LOOP
-	call :countfiles *
+	call :isEmpty
 	if %errorlevel% EQU 1 exit
 	call :getDirName dirName %month%
 	echo %year%\%dirName%
 	if not exist %year%\%dirName% md %year%\%dirName%
 
-	robocopy "%~dp0." "%~dp0%year%\%dirName%" *.* /MOV /MAXAGE:%year%%month%01
+	robocopy "%~dp0." "%~dp0%year%\%dirName%" *.* /MOV /MAXAGE:%year%%month%01 /XF "%~nx0"
+
+	dir /a-d /s "%year%\%dirName%\*" || rmdir %year%\%dirName%
 
 	if %month% EQU 1 (
 		set /a year-=1
@@ -19,10 +21,13 @@ if not exist %year% md %year%
 	)
 goto LOOP
 
-:countfiles (String ext) {
-	set /a return=0
-	for %%F in (*.%~1) do set /a return+=1
-	exit /b %return%
+:isEmpty () {
+	setlocal enableDelayedExpansion
+	for %%F in (*) do (
+		set /a i+=1
+		if !i! GTR 1 exit /b 0
+	)
+	exit /b 1
 }
 
 :getDirName (String returnVar, int month) {
