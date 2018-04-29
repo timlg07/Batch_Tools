@@ -1,0 +1,11 @@
+Dateien und Ordner aus Unterverzeichnissen (1.Ebene) ins Überverzeichnis verschieben
+
+(1) 2-2-subdir2dir.cmd in das gewünschte Verzeichniss kopieren
+(3) 2-2-subdir2dir.cmd ausführen
+(4) sollten sich jetzt Ordner aus den ehemaligen Unterverzeichnissen im aktuellen
+    Verzeichnis befinden, führen Sie die 2-2-subdir2dir.cmd so lange aus, bis keine 
+    Ordner mehr vorhanden sind.
+
+(NOTE)  Um das ganze wieder rückgängig zu machen benutzen Sie 
+	2-3-reverse_subdir2dir.
+
