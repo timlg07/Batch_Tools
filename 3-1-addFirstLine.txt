@@ -1,0 +1,8 @@
+Fügt einer Datei etwas am Anfang hinzu
+
+(1) file = Dateiname der Datei, zu der etwas hinzugefügt werden soll
+(2) [line:6] ist ein Beispiel um eine neue Zeile am Anfang der Datei einzufügen;
+    Kann durch beliebige andere Befehle ersetzt werden um Zeilen in %file% zu schreiben
+
+(NOTE)  Benutzung des Tools: Es wird empfohlen den Code in die eigene Batch zu kopieren 
+        und anzupassen.
