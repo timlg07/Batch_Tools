@@ -1,3 +1,4 @@
+color 0a & title subdir 2 dir
 for /D %%D in (*) do call :FOR_DIR "%%~D"
 exit
 

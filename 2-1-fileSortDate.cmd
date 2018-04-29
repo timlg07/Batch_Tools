@@ -1,3 +1,4 @@
+color 0a & title sorting files
 set "year=%date:~6,4%"
 set "month=%date:~3,2%"
 if not exist %year% md %year%
