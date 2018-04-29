@@ -1,0 +1,5 @@
+Alle Batch_Tools für jeden Ordner ausführen ohne sie dorthin zu kopieren
+
+(1) runAnywhere.cmd öffnen
+(2) gewünschtes Verzeichnis eingeben / hineinkopieren
+(3) Name des gewünschten Batch_Tools eingeben / hineinkopieren

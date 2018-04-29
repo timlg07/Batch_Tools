@@ -1,4 +1,5 @@
 color 0a & title subdir 2 dir
+for /F %%D in ('cd') do set "dp0=%%D\"
 for /D %%D in (*) do call :FOR_DIR "%%~D"
 exit
 
@@ -13,7 +14,7 @@ exit /B
 
 :FOR_FILE
 call :createUniqueName %1 newName
-MOVE /-Y "%~f1" "%~dp0%newName%%~x1"
+MOVE /-Y "%~f1" "%dp0%%newName%%~x1"
 
 ::Zeile zum Anfang der changes.log hinzufuegen
 copy changes.log _changes.log
@@ -36,7 +37,7 @@ exit /b %i%
 
 :FOR_DIR2
 call :createUniqueFolderName %1 newName
-MOVE /-Y "%dirName%\%~1" "%~dp0%newName%"
+MOVE /-Y "%dirName%\%~1" "%dp0%%newName%"
 
 ::Zeile zum Anfang der changes.log hinzufuegen
 copy changes.log _changes.log
