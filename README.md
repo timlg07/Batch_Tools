@@ -7,5 +7,6 @@ Nützliche Tools für Windows
 	2. Datei- und Ordneraufgaben
 		1. Dateien nach Datum in Unterverzeichnisse sortieren
 		2. Dateien aus Unterverzeichnissen (1.Ebene) ins Überverzeichniss verschieben
+        3. Kann nach dem Benutzen von 2-2 die Änderungen wieder rückgängig machen
 	3. Tools für Entwickler
 		1. Fügt einer Datei etwas am Anfang hinzu
