@@ -12,3 +12,6 @@ Nützliche Tools für Windows
 	3. Tools für Entwickler
 		1. Fügt einer Datei etwas am Anfang hinzu
 		2. Dividieren mit Kommazahlen als Ergebnis
+		
+## Info
+Informationen zur Nutzung der Scripts finden sich in der jeweils dazugehörenden Textdatei.
