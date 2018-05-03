@@ -1,0 +1,9 @@
+Command-Line-Tool zum dividieren. Das Ergebnis ist eine Kommazahl.
+
+(1) 3-2-division.cmd öffnen um die Datei divide.cmd zu erstellen.
+(2) Jetzt kann der Befehl divide im aktuellen Ordner verwendet werden.
+    Um ihn von jedem Pfad aus und standardmäßig in cmd verwenden zu 
+    können, muss die Datei divide.cmd in einer der %PATH% Ordner 
+    verschoben werden oder der aktuelle Ordner muss PATH hinzugefügt 
+    werden. (empfehlung: verschieben in "%SystemRoot%\system32")
+(3) Die Syntax des Befehls wird mit dem Befehl divide/? angezeigt
