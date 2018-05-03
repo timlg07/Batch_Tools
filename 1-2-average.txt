@@ -1,0 +1,12 @@
+Berechnet den Durchschnitt von verschiedenen Ganzzahlen
+
+(1) 1-2-average.cmd ausführen
+(2) Zahl eingeben und mit [enter] bestätigen
+(3) Alle Zahlen eingeben
+(4) Sind alle Zahlen eingegeben statt einer weiteren Zahl nur [enter] drücken
+    (oder "f" eingeben)
+(5) Beliebige Zahl zum erneuten ausführen
+
+
+(NOTE) Das Ergebnis wird auf 6 Dezimalstellen genau angegeben (Wert am Anfang der Batch anpassbar)
+       Wird der Wert auf diese 6 Stellen gerundet, wird das durch "Durchschnitt ~ X.xxxxxx" gezeigt
