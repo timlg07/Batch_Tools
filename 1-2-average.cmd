@@ -4,6 +4,9 @@ title Durchschnitt Berechnen
 ::CONFIG::
 set /a decimalPlaces=6
 
+:main 
+cls
+
 ::MESSAGE1::
 echo.
 echo   Zahl eingeben und mit [enter] bestaetigen.
@@ -24,13 +27,15 @@ set /a i=0
 		set /a input=!errorlevel!
 		set /a numbers[%i%]=input
 	) else (
-		call :onInputError "%input%" "input_while"
+		echo %input% ist keine gueltige Eingabe.
+		goto input_while
 	)
 	set /a i+=1
 goto input_while
 
 ::CALCULATION::
 :calc
+	if %i% LSS 0 goto main
 	set /a length=i+1
 	set /a sum=0
 	for /L %%i in (0,1,%i%) do (
@@ -45,7 +50,7 @@ goto input_while
 	echo.   Durchschnitt %equSign% %average%
 	echo.
 	echo.   [Erneut ausfuehren]
-pause >nul & cls & %0
+pause >nul &%0
 
 ::FUNCTIONS::
 :divide
@@ -77,13 +82,6 @@ exit /B 1
 :trim
 	set "%~1=!%~1: =!"
 exit /B
-
-:onInputError
-	set value="%~1"
-	set "callback=:%~2"
-	echo %value% ist keine gueltige Eingabe.
-goto %callback%
-
 
 :deleteLeadingZero
 exit /B %~1
