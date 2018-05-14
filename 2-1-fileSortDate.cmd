@@ -20,6 +20,7 @@ if not exist %year% md %year%
 		set /a month-=1
 	)
 	call :format month
+pause
 goto LOOP
 
 :isEmpty () {
@@ -44,6 +45,6 @@ goto LOOP
 :format (String varName) {
 	setlocal enableDelayedExpansion
 	set "newVal=!%~1!"
-	endlocal & if "%newVal:~1,0%"=="" set "%~1=0%newVal%"
+	endlocal & if "%newVal:~1%"=="" set "%~1=0%newVal%"
 	exit /B 0
 }
