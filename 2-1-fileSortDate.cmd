@@ -19,15 +19,16 @@ if not exist %year% md %year%
 	) else (
 		set /a month-=1
 	)
+	call :format month
 goto LOOP
 
 :isEmpty () {
 	setlocal enableDelayedExpansion
 	for %%F in (*) do (
 		set /a i+=1
-		if !i! GTR 1 exit /b 0
+		if !i! GTR 1 endlocal & exit /b 0
 	)
-	exit /b 1
+	endlocal & exit /b 1
 }
 
 :getDirName (String returnVar, int month) {
@@ -37,5 +38,20 @@ goto LOOP
 	call set monthName=%%monthName:%right%=%%
 	set %~1=%~2_%monthName%
 	set %~1=%dirName:;=%
+	exit /B
+}
+
+:format (String varName) {
+	setlocal enableDelayedExpansion
+	set "length=0"
+    	set "_s=!%~1!#"
+    	for %%i in (4096 2048 1024 512 256 128 64 32 16 8 4 2 1) do (
+      		if "!_s:~%%i,1!" NEQ "" ( 
+       	     		set /a "length+=%%i"
+       	     		set "_s=!_s:~%%i!"
+       	 	)
+   	)
+	set "alternVal=0!%~1!"
+	endlocal & if %length% LSS 2 set "%~1=%alternVal%"
 	exit /B
 }
