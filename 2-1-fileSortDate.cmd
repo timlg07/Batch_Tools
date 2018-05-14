@@ -13,7 +13,7 @@ if not exist %year% md %year%
 
 	dir /a-d /s "%year%\%dirName%\*" || rmdir %year%\%dirName%
 
-	if %month% EQU 1 (
+	if %month% LEQ 1 (
 		set /a year-=1
 		set /a month=12
 	) else (
@@ -43,15 +43,7 @@ goto LOOP
 
 :format (String varName) {
 	setlocal enableDelayedExpansion
-	set "length=0"
-    	set "_s=!%~1!#"
-    	for %%i in (4096 2048 1024 512 256 128 64 32 16 8 4 2 1) do (
-      		if "!_s:~%%i,1!" NEQ "" ( 
-       	     		set /a "length+=%%i"
-       	     		set "_s=!_s:~%%i!"
-       	 	)
-   	)
-	set "alternVal=0!%~1!"
-	endlocal & if %length% LSS 2 set "%~1=%alternVal%"
-	exit /B
+	set "newVal=!%~1!"
+	endlocal & if "%newVal:~1,0%"=="" set "%~1=0%newVal%"
+	exit /B 0
 }
