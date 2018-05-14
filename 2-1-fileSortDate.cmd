@@ -20,7 +20,6 @@ if not exist %year% md %year%
 		set /a month-=1
 	)
 	call :format month
-pause
 goto LOOP
 
 :isEmpty () {
