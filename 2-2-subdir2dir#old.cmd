@@ -7,7 +7,7 @@ exit
 set "dirName=%~1"
 
 for    %%F in ("%~1\*") do call :FOR_FILE "%%~F"
-for /D %%D in ("%~1\*") do call :FOR_DIR2 "%%~D"
+for /D %%D in ("%~1\*") do call :FOR_DIR2 "%%~nD"
 
 rmdir %1
 exit /B
@@ -37,24 +37,22 @@ exit /b %i%
 
 :FOR_DIR2
 call :createUniqueFolderName %1 newName
-
-MOVE /-Y "%dirName%\%~nx1" "%dp0%%newName%"
-::robocopy "%dp0%%dirName%\%~nx1" "%dp0%%newName%" /MOVE 
+MOVE /-Y "%dirName%\%~1" "%dp0%%newName%"
 
 ::Zeile zum Anfang der changes.log hinzufuegen
 copy changes.log _changes.log
-echo "%dirName%\%~nx1"$MOVED_TO;"%newName%">changes.log
+echo "%dirName%\%~1"$MOVED_TO;"%newName%">changes.log
 copy /B changes.log + _changes.log changes.log
 del _changes.log
 
 exit /B
 
 :createUniqueFolderName
-set "%~2=%~nx1"
-if not exist "%~nx1" exit /B 0
+set "%~2=%~1"
+if not exist "%~n1" exit /B 0
 set /a i=0
 :_createUniqueFolderName
 set /a i+=1
-if exist "%~nx1 (%i%)" goto _createUniqueFolderName
+if exist "%~1 (%i%)" goto _createUniqueFolderName
 set "%~2=%~1 (%i%)"
 exit /b %i%
