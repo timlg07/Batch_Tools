@@ -1,6 +1,7 @@
 color 0a & title sorting files
-set "year=%date:~6,4%"
+set  "year=%date:~6,4%"
 set "month=%date:~3,2%"
+set xfiles="%~nx0" "2-2-subdir2dir.cmd" "2-3-reverse_subdir2dir.cmd" "delMoff.cmd" "changes.log"
 if not exist %year% md %year%
 :LOOP
 	call :isEmpty
@@ -9,7 +10,7 @@ if not exist %year% md %year%
 	echo %year%\%dirName%
 	if not exist %year%\%dirName% md %year%\%dirName%
 
-	robocopy "%~dp0." "%~dp0%year%\%dirName%" *.* /MOV /MAXAGE:%year%%month%01 /XF "%~nx0"
+	robocopy "%~dp0." "%~dp0%year%\%dirName%" *.* /MOV /MAXAGE:%year%%month%01 /XF %xfiles%
 
 	dir /a-d /s "%year%\%dirName%\*" || rmdir %year%\%dirName%
 
@@ -23,12 +24,10 @@ if not exist %year% md %year%
 goto LOOP
 
 :isEmpty () {
-	setlocal enableDelayedExpansion
 	for %%F in (*) do (
-		set /a i+=1
-		if !i! GTR 1 endlocal & exit /b 0
+		echo/%xfiles%|findstr /c:"%%~nxF">nul||exit/b 0
 	)
-	endlocal & exit /b 1
+	exit /b 1
 }
 
 :getDirName (String returnVar, int month) {
@@ -37,7 +36,7 @@ goto LOOP
 	set right=%monthName:*;=%
 	call set monthName=%%monthName:%right%=%%
 	set %~1=%~2_%monthName%
-	set %~1=%dirName:;=%
+	call set %~1=%%%~1:;=%%
 	exit /B
 }
 
