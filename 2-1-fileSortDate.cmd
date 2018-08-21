@@ -25,7 +25,7 @@ goto LOOP
 
 :isEmpty () {
 	for %%F in (*) do (
-		echo/%xfiles%|findstr /c:"%%~nxF">nul||exit/b 0
+		echo/%xfiles%|findstr/c:"%%~nxF">nul||exit/b 0
 	)
 	exit /b 1
 }
@@ -43,6 +43,6 @@ goto LOOP
 :format (String varName) {
 	setlocal enableDelayedExpansion
 	set "newVal=!%~1!"
-	endlocal & if "%newVal:~1%"=="" set "%~1=0%newVal%"
+	endlocal&if "%newVal:~1%"=="" set "%~1=0%newVal%"
 	exit /B 0
 }

@@ -8,7 +8,7 @@ exit
 
 :reverse
     set "line=%~1"
-    set "source=%line:$MOVED_TO;=" & set "target=%"
+    set "source=%line:$MOVED_TO;="&set "target=%"
 
     for /F "tokens=1 delims=\" %%D in (%source%) do (
         if not exist %%D mkdir %%D
