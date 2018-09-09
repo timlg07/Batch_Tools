@@ -6,6 +6,7 @@ exit
 :FOR_DIR
 	set "dirName=%~1"
 
+	:: TODO :: replace for with forfiles to handle hidden files
 	for    %%F in ("%~1\*") do call :FOR_FILE "%%~F"
 	for /D %%D in ("%~1\*") do call :FOR_DIR2 "%%~D"
 
