@@ -1,6 +1,6 @@
 color 0a & title subdir 2 dir
-	for /F "tokens=*" %%D in ('cd')   do set "dp0=%%D\"
-	for /D            %%D in (*) do call :FOR_DIR "%%~D"
+	set "dp0=%cd%\"
+	for /D %%D in (*) do call :FOR_DIR "%%~D"
 exit
 
 :FOR_DIR
