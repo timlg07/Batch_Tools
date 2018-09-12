@@ -1,0 +1,8 @@
+Einfacher Sortieralgorithmus zur Verwendung in Batch-Dateien
+
+(1) Die Funktion (inklusive Helper-function) aus 3-3-bubblesort kopieren 
+    und in die neue Batch einfügen.
+(2) Jetzt kann die Funktion, wie in 3-3-bubblesort-demo gezeigt, mithilfe von 
+    ``call:bubblesort list`` aufgerufen werden. (list muss der Name einer Liste
+    im Format `Listenname[integerIndex]` mit der Länge der Liste als 
+    `Listenname.length` sein.)
