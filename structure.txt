@@ -9,3 +9,4 @@
 	3:Tools für Entwickler
 		3-1:Fügt einer Datei etwas am Anfang hinzu
 		3-2:Dividieren mit Kommazahlen als Ergebnis
+		3-3:Zahlen mithilfe von Bubblesort sortieren
