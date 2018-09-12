@@ -1,4 +1,4 @@
-# Batch_Tools
+﻿# Batch_Tools
 Nützliche Tools für Windows
 
 ## Übersicht:
@@ -12,6 +12,7 @@ Nützliche Tools für Windows
 	3. Tools für Entwickler
 		1. Fügt einer Datei etwas am Anfang hinzu
 		2. Dividieren mit Kommazahlen als Ergebnis
+		3. Zahlen mithilfe von Bubblesort sortieren
 		
 ## Info
 Informationen zur Nutzung der Scripts finden sich in der jeweils dazugehörenden Textdatei.
