@@ -83,8 +83,8 @@ exit /B
 
 	
 :noArgs
-	echo Keine Argumente.
-	echo weitere Infos: divide /?
+	echo No arguments provided.
+	echo more information: divide/?
 goto checkName
 
 :info
