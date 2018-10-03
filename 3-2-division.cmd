@@ -44,7 +44,7 @@ exit /B
 
 	if %varContNumber% EQU 0 (
 		if not "%varCont:0=%"=="" (
-			call :onError NAN %varName%
+			call :error NAN %varName% checkNumber
 			set /a varCont=1
 		)
 	)
@@ -59,25 +59,23 @@ exit /B
 :deleteLeadingZero
 exit /B %~1
 
-:onError
-	if /I "%~1"=="NAN" (
-	    echo ERROR_NAN at checkNumber
-		echo "!%~2!" is not a number.
-	)
+:error
+	echo ERROR_%~1 at %~3:
+	echo "!%~2!" is not a number.
 exit /B
 
 
 :division
 	
-	set /a int= dividend / divisor
+	set /a int = dividend / divisor
 	set "result=%int%%decimalSeperator%"
-	set /a remainder=dividend-(int*divisor)
-	set /a decP=0
+	set /a remainder = dividend - (int*divisor)
+	set /a decP = 0
 	:div_LOOP
-		set /a intR=(remainder*10)/divisor
-		set /a remainder=(remainder*10)-(intR*divisor)
+		set /a intR      = (remainder*10) /       divisor
+		set /a remainder = (remainder*10) - (intR*divisor)
 		set result=%result%%intR%
-		set /a decP+=1
+		set /a decP += 1
 		if %remainder% EQU 0 exit /b 0
 		if %decP% GEQ %decimalPlaces% exit /b 1
 	goto div_LOOP
