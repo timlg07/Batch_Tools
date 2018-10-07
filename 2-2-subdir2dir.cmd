@@ -3,22 +3,20 @@ color 0a & title subdir 2 dir
 exit
 
 :FOR_DIR
-	set "dirName=%~1"
+	set "dirName=%~nx1"
 
 	:: TODO :: replace with dir
 	:: (https://superuser.com/questions/475881/for-command-cannot-see-hidden-files)
-	for /f "usebackq tokens=* delims=" %%F in (`dir "%~1\*" /b/a-d`) do call :FOR_FILE "%%~fF"
-dir "%~1\*" /b/a-d&pause
-	for /f "usebackq tokens=* delims=" %%D in (`dir "%~1\*" /b/ad `) do call :FOR_DIR2 "%%~fD"
-dir "%~1\*" /b/ad&pause
+	for /f "usebackq tokens=* delims=" %%F in (`dir "%~1\*" /b/a-d`) do call :FOR_FILE "%~1\%%~F"
+	for /f "usebackq tokens=* delims=" %%D in (`dir "%~1\*" /b/ad `) do call :FOR_DIR2 "%~1\%%~D"
 	rmdir %1
 exit /B
 
 :FOR_FILE
 	call :createUniqueName %1 newName
 	MOVE /-Y "%~f1" "%cd%\%newName%%~x1" || (
-            echo.MOVE "%~f1" "%cd%\%newName%%~x1" -- %errorlevel% > error.txt
-            exit /B %errorlevel%
+            echo.MOVE "%~f1" "%cd%\%newName%%~x1">"error.txt"
+            exit /B 1
         )
 	
 	::Zeile zum Anfang der changes.log hinzufuegen
@@ -43,8 +41,8 @@ exit /b %i%
 	call :createUniqueFolderName %1 newName
 
 	MOVE /-Y "%dirName%\%~nx1" "%cd%\%newName%" || (
-            echo.MOVE "%dirName%\%~nx1" "%cd%\%newName%" -- %errorlevel% > error.txt
-            exit /B %errorlevel%
+            echo.MOVE "%dirName%\%~nx1" "%cd%\%newName%">"error.txt"
+            exit /B 1
         )
 	::robocopy "%cd%\%dirName%\%~nx1" "%cd%\%newName%" /MOVE 
 
