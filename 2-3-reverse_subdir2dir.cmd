@@ -1,8 +1,8 @@
-color 0a & title reversing subdir 2 dir
-for /F "delims=" %%l in (changes.log) do (
+color 0a & title reversing subdir 2 dir & set errors=0
+for /F "tokens=*"  %%l in (changes.log) do (
     call :reverse "%%l"
 )
-del changes.log
+if %errors% EQU 0 (del changes.log) else (ECHO.ERROR&pause>nul)
 exit
 
 
@@ -10,8 +10,8 @@ exit
     set "line=%~1"
     set "source=%line:$MOVED_TO;="&set "target=%"
 
-    for /F "tokens=1 delims=\" %%D in (%source%) do (
-        if not exist %%D mkdir %%D
+    for /F "tokens=*" %%D in (%source%) do (
+        if not exist %%~dpD mkdir %%~dpD
     )
-    MOVE /-Y %target% %source%
+    MOVE /-Y %target% %source% || set /a errors+=1
 exit /B
