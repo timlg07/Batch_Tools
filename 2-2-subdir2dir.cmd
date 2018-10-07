@@ -5,8 +5,6 @@ exit
 :FOR_DIR
 	set "dirName=%~nx1"
 
-	:: TODO :: replace with dir
-	:: (https://superuser.com/questions/475881/for-command-cannot-see-hidden-files)
 	for /f "usebackq tokens=* delims=" %%F in (`dir "%~1\*" /b/a-d`) do call :FOR_FILE "%~1\%%~F"
 	for /f "usebackq tokens=* delims=" %%D in (`dir "%~1\*" /b/ad `) do call :FOR_DIR2 "%~1\%%~D"
 	rmdir %1
@@ -44,7 +42,6 @@ exit /b %i%
             echo.MOVE "%dirName%\%~nx1" "%cd%\%newName%">"error.txt"
             exit /B 1
         )
-	::robocopy "%cd%\%dirName%\%~nx1" "%cd%\%newName%" /MOVE 
 
 	::Zeile zum Anfang der changes.log hinzufuegen
 	copy changes.log _changes.log
