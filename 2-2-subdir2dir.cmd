@@ -16,7 +16,7 @@ exit /B
 
 :FOR_FILE
 	call :createUniqueName %1 newName
-	MOVE /-Y "%~f1" "%dp0%%newName%%~x1"
+	MOVE /-Y "%~f1" "%dp0%%newName%%~x1" || echo.MOVE "%~f1" "%dp0%%newName%%~x1" -- %errorlevel% > error.txt
 	
 	::Zeile zum Anfang der changes.log hinzufuegen
 	copy changes.log _changes.log
@@ -39,7 +39,7 @@ exit /b %i%
 :FOR_DIR2
 	call :createUniqueFolderName %1 newName
 
-	MOVE /-Y "%dirName%\%~nx1" "%dp0%%newName%"
+	MOVE /-Y "%dirName%\%~nx1" "%dp0%%newName%" || echo.MOVE "%dirName%\%~nx1" "%dp0%%newName%" -- %errorlevel% > error.txt
 	::robocopy "%dp0%%dirName%\%~nx1" "%dp0%%newName%" /MOVE 
 
 	::Zeile zum Anfang der changes.log hinzufuegen
