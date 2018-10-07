@@ -16,14 +16,17 @@ exit /B
 
 :FOR_FILE
 	call :createUniqueName %1 newName
-	MOVE /-Y "%~f1" "%dp0%%newName%%~x1" || echo.MOVE "%~f1" "%dp0%%newName%%~x1" -- %errorlevel% > error.txt
-	
+	MOVE /-Y "%~f1" "%dp0%%newName%%~x1" || (
+            echo.MOVE "%~f1" "%dp0%%newName%%~x1" -- %errorlevel% > error.txt
+            exit /B %errorlevel%
+        )
+
 	::Zeile zum Anfang der changes.log hinzufuegen
 	copy changes.log _changes.log
 	echo "%dirName%\%~nx1"$MOVED_TO;"%newName%%~x1">changes.log
 	copy /B changes.log + _changes.log changes.log
 	del _changes.log
-exit /B
+exit /B 0
 
 :createUniqueName
 	set "%~2=%~n1"
@@ -39,7 +42,10 @@ exit /b %i%
 :FOR_DIR2
 	call :createUniqueFolderName %1 newName
 
-	MOVE /-Y "%dirName%\%~nx1" "%dp0%%newName%" || echo.MOVE "%dirName%\%~nx1" "%dp0%%newName%" -- %errorlevel% > error.txt
+	MOVE /-Y "%dirName%\%~nx1" "%dp0%%newName%" || (
+            echo.MOVE "%dirName%\%~nx1" "%dp0%%newName%" -- %errorlevel% > error.txt
+            exit /B %errorlevel%
+        )
 	::robocopy "%dp0%%dirName%\%~nx1" "%dp0%%newName%" /MOVE 
 
 	::Zeile zum Anfang der changes.log hinzufuegen
@@ -48,7 +54,7 @@ exit /b %i%
 	copy /B changes.log + _changes.log changes.log
 	del _changes.log
 
-exit /B
+exit /B 0
 
 :createUniqueFolderName
 	set "%~2=%~nx1"
