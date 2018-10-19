@@ -107,14 +107,18 @@ goto checkName
 	echo The decimal seperator can be "." or "," 
 	echo or any other character. (Default:".")
 	echo.
-	echo Following variables can be used:
+        echo Integer has to be a number or, when surrounded with brackets, an 
+        echo arithmetic expression. Integer can contain following variables:
 	echo RANDOM ^| expands to a random integer
 	echo MAX    ^| expands to the integer max value
 	echo PI     ^| expands to the value of pi
 	echo E      ^| expands to the value of e
-	echo.
 	echo (PI and E are both 3 because floats in input are not supported yet)
 	echo.
+        echo Examples:
+        echo divide random/32768     ^| gives you a random number between 0 and 1
+        echo divide (RANDOM*6)/32768 ^| gives you a random number between 0 and 6
+        echo divide (8-1)/10         ^| calculates 8-1 first, then divides with 10
 exit /b
 
 :checkName
