@@ -19,14 +19,13 @@ if not "%~3"=="" ( set "decimalSeperator=%~3" ) else ( set "decimalSeperator=." 
 call :expand dividend
 call :expand divisor
 
-call :toNumber dividend
-call :toNumber divisor
-call :toNumber decimalPlaces
-
+call :toNumber dividend      ||( echo script execution stopped due to an error & exit /B 1 )
+call :toNumber divisor       ||( echo script execution stopped due to an error & exit /B 1 )
+call :toNumber decimalPlaces ||( echo script execution stopped due to an error & exit /B 1 )
 
 call :division
 echo %result%
-exit /B
+exit /B 0
 
 :expand
 	set "%~1=!%~1:RANDOM=%random%!"
@@ -37,9 +36,9 @@ exit /B
 
 :toNumber <Var>
     setlocal enableDelayedExpansion
-        call :getNumber "!%~1!" "_return"
+        call :getNumber "!%~1!" "_return" || exit /B 1
     endlocal & set "%~1=%_return%"
-exit /B %errorlevel%
+exit /B 0
 
 
 :checkNumber <String>
@@ -60,7 +59,7 @@ exit /B 0
         set "_number=%~1"
         set "_number=%_number: =%"  
         call :checkNumber %1
-        if errorlevel 2 endlocal&set "%~2=NaN"&call :error NaN "%~1" getNumber&exit /B 1
+        if errorlevel 2 endlocal&call :error NaN "%~1" getNumber&set "%~2=NaN"&exit /B 1
         if errorlevel 1 set /a "_number=%_number%"
         cmd /c "exit /B %_number%"
     endlocal&set "%~2=%errorlevel%"
@@ -69,6 +68,7 @@ exit /B 0
 :error
 	echo ERROR_%~1 at %~3:
 	echo "%~2" is not a number.
+	set /a errorlevel_%~1 += 1
 exit /B 1
 
 
