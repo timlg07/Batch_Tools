@@ -19,9 +19,9 @@ if not "%~3"=="" ( set "decimalSeperator=%~3" ) else ( set "decimalSeperator=." 
 call :expand dividend
 call :expand divisor
 
-call :checkNumber dividend
-call :checkNumber divisor
-call :checkNumber decimalPlaces
+call :toNumber dividend
+call :toNumber divisor
+call :toNumber decimalPlaces
 
 
 call :division
@@ -35,34 +35,41 @@ exit /B
 	set "%~1=!%~1:E=3!" &rem 2.718281828
 exit /B
 
-:checkNumber
-	call :trim "%~1"
+:toNumber <Var>
+    setlocal enableDelayedExpansion
+        call :getNumber "!%~1!" "_return"
+    endlocal & set "%~1=%_return%"
+exit /B %errorlevel%
 
-	set "varName=%~1"
-	set "varCont=!%~1!"
-	set /a varContNumber=varCont
 
-	if %varContNumber% EQU 0 (
-		if not "%varCont:0=%"=="" (
-			call :error NAN %varName% checkNumber
-			set /a varCont=1
-		)
-	)
-	call :deleteLeadingZero "%varCont%"
-	set "%varName%=%errorlevel%"
-exit /B
+:checkNumber <String>
+    setlocal enableDelayedExpansion
+        set "_number=%~1"
+        set "_number=%_number: =%"
+        cmd /c "exit /B %_number%" && if not "%_number:0=%"=="" (
+            set /a "_number=%_number%"
+            if !_number! NEQ 0 exit /B 1
+            exit /B 2
+        )
+    endlocal
+exit /B 0
 
-:trim
-	set "%~1=!%~1: =!"
-exit /B
 
-:deleteLeadingZero
-exit /B %~1
+:getNumber <String> <return-var>
+    setlocal
+        set "_number=%~1"
+        set "_number=%_number: =%"  
+        call :checkNumber %1
+        if errorlevel 2 endlocal&set "%~2=NaN"&call :error NaN "%~1" getNumber&exit /B 1
+        if errorlevel 1 set /a "_number=%_number%"
+        cmd /c "exit /B %_number%"
+    endlocal&set "%~2=%errorlevel%"
+exit /B 0
 
 :error
 	echo ERROR_%~1 at %~3:
-	echo "!%~2!" is not a number.
-exit /B
+	echo "%~2" is not a number.
+exit /B 1
 
 
 :division
