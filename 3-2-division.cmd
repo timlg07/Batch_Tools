@@ -15,6 +15,7 @@ if not defined divisor  set  divisor=NAN
 if not "%~2"=="" ( set "decimalPlaces=%~2"    ) else ( set "decimalPlaces=6"    )
 if not "%~3"=="" ( set "decimalSeperator=%~3" ) else ( set "decimalSeperator=." )
 
+set /a sign = +1
 
 call :expand dividend
 call :expand divisor
@@ -22,6 +23,10 @@ call :expand divisor
 call :toNumber dividend      ||( echo script execution stopped due to an error & exit /B 1 )
 call :toNumber divisor       ||( echo script execution stopped due to an error & exit /B 1 )
 call :toNumber decimalPlaces ||( echo script execution stopped due to an error & exit /B 1 )
+
+call :toPositive dividend sign
+call :toPositive divisor  sign
+call :toPositive decimalPlaces
 
 call :division
 echo %result%
@@ -70,6 +75,14 @@ exit /B 0
 	echo "%~2" is not a number.
 	set /a errorlevel_%~1 += 1
 exit /B 1
+
+
+:toPositive
+	if "!%~1:~0,1!"=="-" ( 
+		if not "%~2"=="" set /a %~2 *= -1 
+		set "%~1=!%~1:~1!"
+	)
+exit /B
 
 
 :division
