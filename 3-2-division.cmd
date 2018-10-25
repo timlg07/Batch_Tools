@@ -119,6 +119,8 @@ goto checkName
         echo divide random/32768     ^| gives you a random number between 0 and 1
         echo divide (RANDOM*6)/32768 ^| gives you a random number between 0 and 6
         echo divide (8-1)/10         ^| calculates 8-1 first, then divides with 10
+        echo.
+        echo Note: the arithmetic expression can not be zero.
 exit /b
 
 :checkName
