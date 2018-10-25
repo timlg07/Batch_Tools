@@ -29,6 +29,7 @@ call :toPositive divisor  sign
 call :toPositive decimalPlaces
 
 call :division
+call :setSign result sign
 echo %result%
 exit /B 0
 
@@ -82,6 +83,10 @@ exit /B 1
 		if not "%~2"=="" set /a %~2 *= -1 
 		set "%~1=!%~1:~1!"
 	)
+exit /B
+
+:setSign
+	if "!%~2:~0,1!"=="-" set "%~1=-!%~1!"
 exit /B
 
 
