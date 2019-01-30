@@ -13,8 +13,10 @@ call :formatNumberLength 987 10 "."
 echo %@return%
 pause&exit
 
+
 :formatNumberLength <Number> <length> [<filler>="0"]
 %DelayedExpansion{%
+
     set "@return=%~1"
     set "_f=0"
     if not "%~3"=="" set "_f=%~3"
@@ -22,4 +24,5 @@ pause&exit
         set "@return=%_f%!@return!"
     )
     set "@return=!@return:~-%~2!"
+
 %}%
