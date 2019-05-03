@@ -1,21 +1,19 @@
 @echo off
 :main
-    setlocal enabledelayedexpansion
-        set "result="
-        set /p "num_0=Zahl: >"
+    set "result="
+    set /p "num_0=Zahl: >"
 
-        call :deleteLeadingZero %num_0%
-        set /a num_0  = %errorlevel%
-        set /a number = %num_0%
+    call :deleteLeadingZero %num_0%
+    set /a num_0  = %errorlevel%
+    set /a number = %num_0%
 
-        :while
-            set /a number = %number% /  2
-            set /a binary = %number% %% 2
-            set   "result=%binary%%result%"
-        if %number% NEQ 0 goto while
-            echo %num_0% in binaer: %result% &echo+
+    :while
+        set /a number = %number% /  2
+        set /a binary = %number% %% 2
+        set   "result=%binary%%result%"
+    if %number% NEQ 0 goto while
 
-    endlocal
+    echo %num_0% in binaer: %result% &echo+
 goto main
 
 :deleteLeadingZero
