@@ -4,7 +4,9 @@ Nützliche Tools für Windows
 ## Übersicht:
 	1. Informationsausgabe
 		1. Ganzzahlen zu Binärzahlen konvertieren
-		2. Durchschnitt von verschiedenen Ganzzahlen berechnen
+		2. Binärzahlen zu Ganzzahlen konvertieren (noch nicht dokumentiert)
+		3. Durchschnitt von verschiedenen Ganzzahlen berechnen
+		4. Altersberechnung anhand von Jahreszahlen (noch nicht dokumentiert)
 	2. Datei- und Ordneraufgaben
 		1. Dateien nach Datum in Unterverzeichnisse sortieren
 		2. Dateien aus Unterverzeichnissen (1.Ebene) ins Überverzeichniss verschieben
