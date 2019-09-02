@@ -1,4 +1,4 @@
-Ändert den angezeigten Ordnernamen vom Datumsformat dd.mm.yyyy zu yyyy-mm-dd um eine Sortierung nach Datum zu ermöglichen. Eignet sich z.B. für die von Sonys "PlayMemories Home" generierte Ordnerstruktur, die durch das Programm nicht verändert, sondern lediglich anders angezeigt wird.
+ï»¿Ã„ndert den angezeigten Ordnernamen vom Datumsformat dd.mm.yyyy zu yyyy-mm-dd um eine Sortierung nach Datum zu ermÃ¶glichen. Eignet sich z.B. fÃ¼r die von Sonys "PlayMemories Home" generierte Ordnerstruktur, die durch das Programm nicht verÃ¤ndert, sondern lediglich anders angezeigt wird.
 
-(1) Die Datei in das Verzeichnis kopieren, welches die Ordner im Datumsformat dd.mm.yyyy enthält.
-(2) Die Datei ausführen, sodass per desktop.ini die im explorer angezeigten Namen der Ordner geändert werden.
+(1) Die Datei in das Verzeichnis kopieren, welches die Ordner im Datumsformat dd.mm.yyyy enthÃ¤lt.
+(2) Die Datei ausfÃ¼hren, sodass per desktop.ini die im explorer angezeigten Namen der Ordner geÃ¤ndert werden.
