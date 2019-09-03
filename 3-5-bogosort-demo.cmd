@@ -24,7 +24,7 @@ goto bogosort
 	set _last=-Infinity
 	for /L %%i in (0 1 !%~1.lastIndex!) do (
 		if not "!_last!"=="-Infinity" (
-			if not "!_last!" LEQ "!%~1[%%i]!" (
+			if not !_last! LEQ !%~1[%%i]! (
 				exit /B 1
 			)
 		)
@@ -32,7 +32,7 @@ goto bogosort
 	)
 exit /B 0
 
-:randomElement var Array
+:randomElement var Array<>
 	set /a "%~1 = !%~2.length! * %random% / 32768"
 exit /B !%~1!
 
