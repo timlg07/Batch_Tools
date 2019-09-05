@@ -1,5 +1,7 @@
 ﻿(A) bogosort-demo-version
 
+Ein Array, bestehend aus 5 zufälligen Zahlenwerten, wird generiert und unter Ausgabe der einzelnen Schritte sortiert.
+
 
 (B) bogosort-parameter-version
 
