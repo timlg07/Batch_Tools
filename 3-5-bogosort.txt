@@ -1,9 +1,9 @@
-(A) bogosort-demo-version
+﻿(A) bogosort-demo-version
 
 
 (B) bogosort-parameter-version
 
 Die Datei kann mit einer Reihe von Integern als Parameter aufgerufen werden 
-(z.B. `bogosort 420 0 69 3`, hierf�r muss "3-5-bogosort-parameter.cmd" zu "bogosort.cmd" umbenannt werden, ansonst schreiben Sie: `3-5-bogosort-parameter ...`) 
+(z.B. `bogosort 420 0 69 3`, hierfür muss "3-5-bogosort-parameter.cmd" zu "bogosort.cmd" umbenannt werden, ansonst schreiben Sie: `3-5-bogosort-parameter ...`) 
 und gibt diese sortiert aus
 (z.B.: 0 3 69 420).
