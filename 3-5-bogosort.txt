@@ -1,4 +1,6 @@
-﻿(A) bogosort-demo-version
+﻿Für gewöhnlich ineffizienter Sortieralgorithmus als Demo-Version und als mit Parametern aufrufbare Batch-Datei.
+
+(A) bogosort-demo-version
 
 Ein Array, bestehend aus 5 zufälligen Zahlenwerten, wird generiert und unter Ausgabe der einzelnen Schritte sortiert.
 
