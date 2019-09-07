@@ -16,6 +16,7 @@ Nützliche Tools für Windows
 		1. Fügt einer Datei etwas am Anfang hinzu
 		2. Dividieren mit Kommazahlen als Ergebnis
 		3. Zahlen mithilfe von Bubblesort sortieren
+		4. Zahlen auf eine bestimmte Stringlänge formatieren
 		5. Zahlen mithilfe von Bogosort sortieren
 		
 ## Info
