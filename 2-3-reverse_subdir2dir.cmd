@@ -11,7 +11,7 @@ exit
     set "source=%line:$MOVED_TO;="&set "target=%"
 
     for /F "tokens=*" %%D in (%source%) do (
-        if not exist %%~dpD mkdir %%~dpD
+        if not exist "%%~dpD" mkdir "%%~dpD"
     )
     MOVE /-Y %target% %source% || set /a errors+=1
 exit /B
